@@ -1,0 +1,89 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="edit-subscription-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="70" md-colors="{color:'blue-grey'}">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Subscription</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form id="subscription-form" name="vm.form.subscriptionForm" class="form-horizontal" novalidate>
+          <section>
+            <div>
+              <div ng-show="vm.subscriptionStatus === 'no'" class="text-center form-group">
+                <div class="alert alert-warning">
+                  You have not subscribed yet! Please subscribe
+                </div>
+                <!-- <a class="btn btn-primary" title="Subscribe" ng-click="vm.loadModal();">Subscribe</a> -->
+                <md-button ng-click="vm.loadModal()" title="Subscribe" class="md-raised md-primary faded-jade">Subscribe</md-button>
+              </div>
+              <div ng-show="vm.subscriptionStatus === 'expired'">
+                <strong style="color:blue;">Your subscription is expired. Please renew.</strong>
+                <br />
+                <br />
+                <table st-table="rowCollection" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Subscription Date (MM/DD/YYYY)</th>
+                      <th>Expiry Date (MM/DD/YYYY)</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ vm.subscriptionDate | date:'MM/dd/yyyy' }}</td>
+                      <td>{{ vm.expiryDate | date:'MM/dd/yyyy' }}</td>
+                      <td>{{ vm.status }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a class="btn btn-primary" title="Renew" ng-click="vm.loadModal();">Renew</a>
+              </div>
+              <div ng-show="vm.subscriptionStatus === 'valid'">
+                <table st-table="rowCollection" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Subscription Date</th>
+                      <th>Expiry Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ vm.subscriptionDate| date:'MM/dd/yyyy' }}</td>
+                      <td>{{ vm.expiryDate| date:'MM/dd/yyyy' }}</td>
+                      <td>{{ vm.status }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <br />
+              <br />
+              <br />
+              <div ng-show="vm.subscriptionStatus != 'no'">
+                <strong>Subscription summary:</strong>
+                <br />
+                <table st-table="rowCollection" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Subscription Date</th>
+                      <th>Expiry Date</th>
+                      <th>Charge</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="subscription in vm.allSubscriptions">
+                      <td>{{ subscription.subscriptionDate | date:'MM/dd/yyyy' }}</td>
+                      <td>{{ subscription.expiryDate | date:'MM/dd/yyyy' }}</td>
+                      <td>{{ (subscription.charge /100) | currency }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

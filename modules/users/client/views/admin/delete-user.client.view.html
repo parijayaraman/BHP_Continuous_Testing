@@ -1,0 +1,14 @@
+<form class="form-horizontal" role="form" novalidate>
+  <div class="modal-header">
+    <h4>{{ui.modalHeaderTitle}}</h4>
+  </div>
+  <div class="modal-body">
+    <P> Do you want to delete "{{model.user.firstName}} {{model.user.lastName}}"?</P>
+  </div>
+  <div class="modal-footer">
+    <!-- <button class="btn btn-primary save" role="button" ng-click="deleteUser(model.user)">Delete</button> -->
+    <md-button class="md-raised md-primary faded-jade" ng-click="deleteUser(model.user)">Delete</md-button>
+    <!-- <button class="btn btn-warning cancel" role="button" ng-click="cancel()">Cancel</button> -->
+    <md-button class="md-raised md-primary faded-jade" ng-click="cancel()">Cancel</md-button>
+  </div>
+</form>

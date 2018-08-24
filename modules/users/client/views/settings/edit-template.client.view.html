@@ -1,0 +1,30 @@
+<section>
+  <md-content  layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="edit-template-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="40" md-colors="{color:'blue-grey'}">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Set default template</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.defaultTemplateForm" ng-submit="vm.updateDefaultTemplate(vm.defaultTemplateForm.$valid)" class="defaultTemplate" novalidate autocomplete="off">
+          <div class="form-group" show-errors>
+            <label class="control-label" for="defaultTemplate">Set default template</label>
+            <select id="defaultTemplate" name="defaultTemplate" class="form-control" data-ng-model="vm.template" data-ng-options="template.name for template in vm.templates" required>
+              <option value="">--None--</option>
+              <!-- not selected / blank option -->
+            </select>
+            <div ng-messages="vm.defaultTemplateForm.defaultTemplate.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Please enter default template.</p>
+            </div>
+          </div>
+          <div class="text-center form-group">
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+            <md-button type="submit" ng-disabled="!vm.defaultTemplateForm.$valid" class="md-raised md-primary faded-jade">Submit</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+  </div>
+</section>

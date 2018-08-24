@@ -1,0 +1,80 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="customer-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="60">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>{{vm.customer._id ? 'Edit customer' : 'New customer'}}</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.form.customerForm" class="form-vertical" ng-submit="vm.save(vm.form.customerForm.$valid)" novalidate>
+          <!--While submitting a form controller, action amd form parameters is necessary, vm is a controller object and save is a method-->
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group" show-errors>
+              <label class="control-label" for="name">First name</label>
+              <input name="fname" type="text" ng-model="vm.customer.firstName" id="fname" class="form-control text-capitalize" required>
+              <div ng-messages="vm.form.customerForm.fname.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your first name</p>
+              </div>
+            </md-input-container>
+            <md-input-container flex class="form-group" show-errors>
+              <label class="control-label" for="name">Last name</label>
+              <input name="lname" type="text" ng-model="vm.customer.lastName" id="lname" class="form-control text-capitalize" required>
+              <div ng-messages="vm.form.customerForm.lname.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your last name</p>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group">
+              <label class="control-label" for="name">Organization</label>
+              <input name="org" type="text" ng-model="vm.customer.organization" id="org" class="form-control">
+            </md-input-container>
+            <md-input-container flex class="form-group" show-errors>
+              <label class="control-label" for="dob">DOB</label>
+              <md-datepicker ng-model="vm.customer.dob" ng-required="true" md-max-date="vm.maxDate" md-min-date="vm.minDate" name="dob" id="dob"></md-datepicker>
+              <div ng-messages="vm.form.customerForm.dob.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter the valid date of birth!</p>
+                <p class="my-message" ng-message="valid">The entered date of birth is not a date!</p>
+                <p class="my-message" ng-message="maxdate">The entered date of birth should be between the years 1916 to 2000!</p>
+                <p class="my-message" ng-message="mindate">The entered date of birth should be between the years 1916 to 2000!</p>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group">
+              <label class="control-label" for="name">Job title</label>
+              <input name="jtitle" type="text" ng-model="vm.customer.jobTitle" id="jtitle" class="form-control text-capitalize">
+            </md-input-container>
+            <md-input-container flex class="form-group" show-errors>
+              <label class="control-label" for="name">Email address</label>
+              <input name="email" type="email" ng-model="vm.customer.email" id="email" class="form-control">
+              <div ng-messages="vm.form.customerForm.email.$error" role="alert">
+                <p class="my-message" ng-message="email">Invalid email address</p>
+              </div>
+            </md-input-container>
+          </div>
+          <div flex>
+            <label class="control-label" for="gender">Gender</label>
+            <md-radio-group flex ng-model="vm.customer.gender" class="form-group" show-errors layout="row">
+              <md-radio-button name="gender" id="gender" ng-model="vm.customer.gender" value="0" class="md-primary" required>Male</md-radio-button>
+              <md-radio-button name="gender" id="gender" ng-model="vm.customer.gender" value="1" class="md-primary" required> Female </md-radio-button>
+          </div>
+          <div class="text-center form-group">
+            <md-button type="submit" ng-disabled="!vm.form.customerForm.$valid" class="md-raised md-primary faded-jade" ng-hide="vm.isCreateOrUpdate">{{vm.customer._id ? 'Update' : 'Create'}}
+              <md-tooltip md-direction="bootom" class="mat-tooltip">Create or update the customer</md-tooltip>
+            </md-button>
+            <md-button type="submit" ng-disabled="true" class="md-raised md-primary faded-jade" ng-show="vm.isCreateOrUpdate">{{vm.customer._id ? 'Updating...' : 'Creating...'}}
+            </md-button>
+            <md-button class="md-raised md-primary faded-jade" ui-sref="customers.list"><span>Cancel
+              <md-tooltip md-direction="bottom" class="mat-tooltip"> Back to customers</md-tooltip>
+            </span></md-button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

@@ -1,0 +1,34 @@
+<section>
+  <div class="page-header" style="border-bottom: none;">
+  </div>
+  <div class="row">
+    <nav class="col-sm-3 col-md-3">
+      <ul class="nav">
+        <li ui-sref-active="active">
+          <a ui-sref="customers.settings.profile" style="text-align:left" class="md-button" ng-class="{'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.profile')}">Edit profile</a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="customers.settings.picture" style="text-align:left" class="md-button" ng-class="{'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.picture')}">Change profile picture</a>
+        </li>
+        <li ui-sref-active="active" ng-show="vm.user.provider === 'local'">
+          <a ui-sref="customers.settings.password" style="text-align:left" class="md-button" ng-class="{ 'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.password')}">Change password</a>
+        </li>
+        <li ui-sref-active="active" ng-show="vm.user.provider === 'local'">
+          <a ui-sref="customers.settings.template" style="text-align:left" class="md-button" ng-class="{ 'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.template')}">Set default template</a>
+        </li>
+        <li ui-sref-active="active" ng-show="vm.user.provider === 'local'">
+          <a ui-sref="customers.settings.subscription" style="text-align:left" class="md-button" ng-class="{ 'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.subscription')}">Subscription</a>
+        </li>
+        <li ui-sref-active="active" ng-show="vm.user.provider === 'local'">
+          <a ui-sref="customers.settings.importFile" style="text-align:left" class="md-button" ng-class="{ 'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.importFile')}">Import file</a>
+        </li>
+        <li ui-sref-active="active" ng-show="vm.user.provider === 'local'">
+          <a ui-sref="customers.settings.reminder" style="text-align:left" class="md-button" ng-class="{ 'md-raised md-primary faded-jade md-ink-ripple': isActive('customers.settings.reminder')}">Set reminder</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-8 col-md-7 settings-view">
+      <div ui-view></div>
+    </div>
+  </div>
+</section>

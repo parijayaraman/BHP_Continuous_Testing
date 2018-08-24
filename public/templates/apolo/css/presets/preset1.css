@@ -1,0 +1,105 @@
+a {
+  color: #7094aa;
+}
+a:hover {
+  color: #567b91;
+}
+.sp-megamenu-parent .sp-dropdown li.sp-menu-item >a:hover {
+  background: #7094aa;
+}
+.sp-megamenu-parent .sp-dropdown li.sp-menu-item.active>a {
+  color: #7094aa;
+}
+#offcanvas-toggler >i {
+  color: #fff;
+}
+#offcanvas-toggler >i:hover {
+  color: #fff;
+}
+.btn-primary,
+.sppb-btn-primary {
+  border-color: #5e859e;
+  background-color: #7094aa;
+}
+.btn-primary:hover,
+.sppb-btn-primary:hover {
+  border-color: #4d6d81;
+  background-color: #567b91;
+}
+ul.social-icons >li a:hover {
+  color: #7094aa;
+}
+.sp-page-title {
+  background: #7094aa;
+}
+.layout-boxed .body-innerwrapper {
+  background: #ffffff;
+}
+.sp-module ul >li >a {
+  color: #968989;
+}
+.sp-module ul >li >a:hover {
+  color: #7094aa;
+}
+.sp-module .latestnews >div >a {
+  color: #968989;
+}
+.sp-module .latestnews >div >a:hover {
+  color: #7094aa;
+}
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li.active > a,
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li > a:hover {
+  background: #7094aa;
+}
+.search .btn-toolbar button {
+  background: #7094aa;
+}
+.post-format {
+  background: #7094aa;
+}
+.voting-symbol span.star.active:before {
+  color: #7094aa;
+}
+.sp-rating span.star:hover:before,
+.sp-rating span.star:hover ~ span.star:before {
+  color: #567b91;
+}
+.entry-link,
+.entry-quote {
+  background: #7094aa;
+}
+blockquote {
+  border-color: #7094aa;
+}
+.carousel-left:hover,
+.carousel-right:hover {
+  background: #7094aa;
+}
+#sp-footer {
+  background: #7094aa;
+}
+.sp-comingsoon body {
+  background-color: #7094aa;
+}
+.pagination>li>a,
+.pagination>li>span {
+  color: #968989;
+}
+.pagination>li>a:hover,
+.pagination>li>a:focus,
+.pagination>li>span:hover,
+.pagination>li>span:focus {
+  color: #968989;
+}
+.pagination>.active>a,
+.pagination>.active>span {
+  border-color: #7094aa;
+  background-color: #7094aa;
+}
+.pagination>.active>a:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:hover,
+.pagination>.active>span:focus {
+  border-color: #7094aa;
+  background-color: #7094aa;
+}

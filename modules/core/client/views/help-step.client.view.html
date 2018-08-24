@@ -1,0 +1,83 @@
+<md-dialog aria-label="Helper Dialog" flex="40" md-colors="{color:'blue-grey'}">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>How it works</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-close"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="min-height: 200px;">
+      &nbsp;&nbsp;&nbsp;<span style="text-align: center;">Steps {{ui.myTabIndex + 1}}/5</span>
+      <div class="progress" style="height: 10px;">
+        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width: {{ui.progressValue}}%" aria-valuenow="{{ui.myTabIndex}}" aria-valuemin="0" aria-valuemax="5"></div>
+      </div>
+      <md-tabs md-dynamic-height md-border-bottom md-selected="ui.myTabIndex">
+        <md-tab>
+          <md-tab-label>
+            <i class="fa fa-user fa-2x"></i>
+            <p>Step 1</p>
+          </md-tab-label>
+          <md-tab-body>
+            <p class="md-padding">
+              <strong>Step1:</strong> Goto 'Customers' tab.
+            </p>
+          </md-tab-body>
+        </md-tab>
+        <md-tab ng-disabled="ui.myTabIndex <= 0">
+          <md-tab-label>
+            <i class="fa fa-edit fa-2x"></i>
+            <p>Step 2</p>
+          </md-tab-label>
+          <md-tab-body>
+            <p class="md-padding">
+              <strong> Step2:</strong> Use 'Add New Customer' to add start adding customers.
+            </p>
+          </md-tab-body>
+        </md-tab>
+        <md-tab ng-disabled="ui.myTabIndex <= 1">
+          <md-tab-label>
+            <i class="fa fa-folder fa-2x"></i>
+            <p>Step 3</p>
+          </md-tab-label>
+          <md-tab-body>
+            <p class="md-padding">
+              <strong> Step3: </strong>Provide customer details for each new customer.
+            </p>
+          </md-tab-body>
+        </md-tab>
+        <md-tab ng-disabled="ui.myTabIndex <= 2">
+          <md-tab-label>
+            <i class="glyphicon glyphicon-envelope fa-2x"></i>
+            <p>Step 4</p>
+          </md-tab-label>
+          <md-tab-body>
+            <p class="md-padding">
+              <strong>Step4:</strong> Using 'Send greetings' icon in 'Home' tab to send greeting to your customers.
+            </p>
+          </md-tab-body>
+        </md-tab>
+        <md-tab ng-disabled="ui.myTabIndex <= 3">
+          <md-tab-label>
+            <i class="fa fa-backward fa-2x"></i>
+            <p>Step 5</p>
+          </md-tab-label>
+          <md-tab-body>
+            <p class="md-padding">
+              <strong> Step5: </strong> Turn back the wheels of time for your customers!.
+            </p>
+          </md-tab-body>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    {{ui.ui.progressValue}}
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised md-primary faded-jade" ng-show="ui.myTabIndex > 0;" ng-click="ui.myTabIndex = ui.myTabIndex-1; ui.progressValue = ((ui.myTabIndex + 1) * 100) / 5"> Previous </md-button>
+      <md-button class="md-raised md-primary faded-jade" ng-show="ui.myTabIndex < 4;" ng-click="ui.myTabIndex = ui.myTabIndex+1; ui.progressValue = ((ui.myTabIndex + 1) * 100) / 5"> Next </md-button>
+      <span flex></span>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

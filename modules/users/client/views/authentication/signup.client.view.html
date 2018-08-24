@@ -1,0 +1,59 @@
+<div class="md-padding">
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="signup-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Register</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+          <md-input-container class="form-group md-block" show-errors>
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.credentials.firstName" required autofocus>
+            <div ng-messages="vm.userForm.firstName.$error" role="alert">
+              <p class="my-message" ng-message="required">Please enter your first name</p>
+            </div>
+          </md-input-container>
+          <md-input-container class="form-group md-block" show-errors>
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" ng-model="vm.credentials.lastName" required>
+            <div ng-messages="vm.userForm.lastName.$error" role="alert">
+              <p class="my-message" ng-message="required">Please enter your last name</p>
+            </div>
+          </md-input-container>
+          <md-input-container class="form-group md-block" show-errors>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" class="form-control" ng-model="vm.credentials.email" lowercase required>
+            <div ng-messages="vm.userForm.email.$error" role="alert">
+              <p class="my-message" ng-message="required">Please enter your email address</p>
+              <p class="my-message" ng-message="email">Invalid email address.</p>
+            </div>
+          </md-input-container>
+          <md-input-container class="form-group md-block" show-errors>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" uib-popover="{{vm.getPopoverMsg()}}" popover-trigger="outsideClick" password-validator required>
+            <div ng-messages="vm.userForm.password.$error" role="alert">
+              <p class="my-message" ng-message="required">Please enter your password</p>
+              <div ng-repeat="passwordError in passwordErrors">
+                <p class="my-message" ng-show="vm.userForm.password.$error.requirements">{{passwordError}}</p>
+              </div>
+            </div>
+          </md-input-container>
+          <md-input-container class="form-group md-block" ng-show="!vm.userForm.password.$error.required">
+            <uib-progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></uib-progressbar>
+          </md-input-container>
+          <div class="text-center form-group">
+            <md-button type="submit" ng-disabled="!vm.userForm.$valid" ng-hide="vm.isButtonLoading" class="md-raised md-primary faded-jade">Sign Up</md-button>
+          </div>
+          <div class="text-center form-group">
+            <md-button class="md-raised md-primary faded-jade" ng-show="vm.isButtonLoading" type="submit" ng-disabled="true"><i class="fa fa-refresh fa-spin"></i> Loading</md-button>
+          </div>
+          <div class="text-center login">
+            <md-button class="md-primary faded-jade" ui-sref="authentication.signin">Existing user? Please login.</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</div>

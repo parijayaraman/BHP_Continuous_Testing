@@ -1,0 +1,61 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="user-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="50">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>{{vm.user._id ? 'Edit professional' : 'New professional'}}</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.userForm" ng-submit="vm.save(vm.userForm.$valid)" novalidate>
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group md-block" show-errors>
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.user.firstName" required autofocus />
+              <div ng-messages="vm.userForm.firstName.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your first name.</p>
+              </div>
+            </md-input-container>
+            <md-input-container flex class="form-group md-block" show-errors>
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" ng-model="vm.user.lastName" required />
+              <div ng-messages="vm.userForm.lastName.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your last name.</p>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group md-block" show-errors>
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email" ng-disabled="vm.user._id" required />
+              <div ng-messages="vm.userForm.email.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your email address.</p>
+                <p class="my-message" ng-message="email">Invalid email address.</p>
+              </div>
+            </md-input-container>
+            <md-input-container flex class="form-group md-block" ng-show="!vm.user._id" show-errors>
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" class="form-control" ng-model="vm.user.password" uib-popover="{{vm.getPopoverMsg()}}" popover-trigger="outsideClick" password-validator ng-required="!vm.user._id">
+              <div ng-messages="vm.userForm.password.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your password.</p>
+                <div ng-repeat="passwordError in passwordErrors">
+                  <p class="my-message" ng-show="vm.userForm.password.$error.requirements">{{passwordError}}</p>
+                </div>
+              </div>
+              <br/>
+              <uib-progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></uib-progressbar>
+            </md-input-container>
+          </div>
+          <md-input-container flex class="form-group md-block">
+            <md-checkbox ng-model="vm.user.isActive" id="isActive" name="isActive">Click to activate</md-checkbox>
+          </md-input-container>
+          <div class="form-group text-center">
+            <md-button type="submit" ng-disabled="!vm.userForm.$valid" class="md-raised md-primary faded-jade" ng-hide="vm.isCreateOrUpdate">{{vm.user._id ? 'Update' : 'Create'}}</md-button>
+            <md-button type="submit" ng-disabled="true" class="md-raised md-primary faded-jade" ng-show="vm.isCreateOrUpdate">{{vm.user._id ? 'Updating...' : 'Creating...'}}</md-button>
+            <md-button class="md-raised md-primary faded-jade" title="Go Back" ui-sref="admin.dashboard.users"><span>Cancel</span></md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

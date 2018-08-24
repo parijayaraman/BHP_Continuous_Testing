@@ -1,0 +1,48 @@
+{
+  "name": "birthday_app",
+  "description": "Birthday application",
+  "homepage": "http://localhost:3000/",
+  "license": "RIT",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-stripe": "~5.0.0",
+    "angular-animate": "~1.5.0",
+    "angular-bootstrap": "~1.2.1",
+    "angular-aria": "~1.5.0",
+    "angular-messages": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "angular-resource": "~1.5.0",
+    "angular-sanitize": "~1.5.0",
+    "angular-ui-notification": "~0.2.0",
+    "angular-ui-router": "~0.2.18",
+    "textAngular": "~1.5.16",
+    "angular-csv-import": "0.0.27",
+    "bootstrap": "~3.3.6",
+    "ng-file-upload": "~12.1.0",
+    "owasp-password-strength-test": "~1.3.0",
+    "angular-material": "^1.1.4",
+    "angular-chart.js": "^1.1.1",
+    "angular-spinner": "^1.0.1",
+    "angular-papa-promise": "^0.0.4",
+    "papaparse": "^4.3.3",
+    "angular-underscore": "^0.5.0",
+    "underscore": "^1.8.3",
+    "fontAwesome": "4.7.0",
+    "moment": "^2.22.2"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/css/bootstrap-theme.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "jquery": {
+      "main": []
+    }
+  },
+  "resolutions": {
+    "angular": "1.5.11"
+  }
+}

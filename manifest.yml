@@ -1,0 +1,13 @@
+---
+declared-services:
+  birthday_app-mongo:
+    label: mongodb
+    plan: 100
+applications:
+- name: birthday_app
+  host: birthday_app-${random-word}
+  memory: 128M
+  services:
+  - birthday_app-mongo
+  env:
+    NODE_ENV: cloud-foundry

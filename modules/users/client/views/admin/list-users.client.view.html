@@ -1,0 +1,55 @@
+<section>
+  <div class="page-header" style="border-bottom: none;">
+    <div layout="row">
+      <div flex="60">
+        <md-button class="md-raised md-primary faded-jade" title="Add new professional" ui-sref="admin.dashboard.user-create"><span>Add new professional</span></md-button>
+      </div>
+      <md-input-container flex>
+        <input class="form-control" type="text" ng-model="vm.search" placeholder="Search by First name, Last name, Email address" ng-change="vm.figureOutItemsToDisplay()" />
+      </md-input-container>
+    </div>
+  </div>
+  <div class="list-group">
+    <!--   <a ng-repeat="user in vm.pagedItems" ui-sref="admin.user({userId: user._id})" class="list-group-item">
+      <h4 class="list-group-item-heading" ng-bind="user.username"></h4>
+      <p class="list-group-item-text pull-right small" ng-bind="user.roles"></p>
+      <p class="list-group-item-text" ng-bind="user.email"></p>
+    </a> -->
+    <table class="table table-striped table-condensed table-hover">
+      <thead>
+        <tr>
+          <th class="col-md-2" flex>Name</th>
+          <!--   <th class="col-md-2">Username&nbsp;</th> -->
+          <th class="col-md-2" flex>Email address</th>
+          <th class="col-md-1" flex>Start date</th>
+          <th class="col-md-1" flex>Expiry date</th>
+          <th class="col-md-1" flex>Subscription charge</th>
+          <th class="col-md-1" flex>Status</th>
+          <th class="col-md-1" flex>No of customers</th>
+          <th class="col-md-1" flex>Edit</th>
+          <!-- <th class="dob col-md-1">Delete</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in vm.pagedItems | orderBy:'firstName'">
+          <td>{{user.firstName}} {{user.lastName}}</td>
+          <!-- <td>{{user.username}}</td> -->
+          <td>{{user.email}}</td>
+          <td>{{ (user.subscription.subscriptionDate? user.subscription.subscriptionDate : '-') | date:'MM/dd/yyyy' }}</td>
+          <td>{{ (user.subscription.expiryDate? user.subscription.expiryDate : '-') | date:'MM/dd/yyyy' }}</td>
+          <td>{{ (user.subscription.charge? user.subscription.charge / 100 : '0') | currency }}</td>
+          <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+          <td>{{ user.customerCount }}</td>
+          <td>
+            <md-button style="margin:0px;" class="md-raised md-primary faded-jade" title="Edit" ui-sref="admin.dashboard.user-edit({userId: user._id})"><span class="glyphicon glyphicon-edit"></span></md-button>
+          </td>
+          <!-- <td><a class="btn btn-danger"  title="Delete"><span class="glyphicon glyphicon-trash"></span></a></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <uib-pagination boundary-links="true" max-size="10" items-per-page="vm.itemsPerPage" total-items="vm.filterLength" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+  <div class="alert alert-warning" ng-if="vm.users.length == 0">
+    No professionals found.
+  </div>
+</section>

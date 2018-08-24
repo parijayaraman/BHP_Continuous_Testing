@@ -1,0 +1,33 @@
+<!-- <section>
+  <div flex>
+    <uib-tabset>
+      <uib-tab index="0" heading="Home" ui-sref="customers.birthdaylist"></uib-tab>
+      <uib-tab index="2" id="customerTab" heading="Customers" ui-sref="customers.list"></uib-tab>
+      <uib-tab index="3" heading="My Preference" ui-sref="customers.settings.profile"></uib-tab>
+    </uib-tabset>
+    <div>
+      <div ui-view></div>
+    </div>
+  </div>
+</section> -->
+
+<section  class="md-padding">
+  <div flex>
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Home" index="0" heading="Home" ui-sref="customers.birthdaylist">
+       
+        </md-tab>
+        <md-tab label="Customers" index="2" id="customerTab" heading="Customers" ui-sref="customers.list">
+        
+        </md-tab>
+        <md-tab label="My Preference" index="3" heading="My Preference" ui-sref="customers.settings.profile">
+     
+        </md-tab>
+      </md-tabs>
+    </md-content>
+     <div class="md-padding">
+        <div ui-view></div>
+      </div>
+  </div>
+</section>

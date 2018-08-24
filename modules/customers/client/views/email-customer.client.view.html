@@ -1,0 +1,65 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="customer-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="70">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Send greeting to </span><span class="text-capitalize">{{vm.customer.firstName}} {{vm.customer.lastName}}</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.form.customerForm" class="form-vertical" ng-submit="vm.askForSendEmailTemplate(vm.form.customerForm.$valid)" novalidate>
+          <md-input-container flex class="form-group" show-errors>
+            <select id="template" name="template" class="form-control" ng-change="vm.getTemplate()" data-ng-model="vm.customer.template" data-ng-options="template.name for template in vm.templates">
+              <option value="">-- Select template --</option>
+              <!-- not selected / blank option -->
+            </select>
+            <div ng-messages="vm.form.customerForm.template.$error" role="alert">
+              <p class="my-message" ng-message="required">Template is required</p>
+            </div>
+            <md-tooltip class="mat-tooltip" md-direction="right">Select a greeting template</md-tooltip>
+          </md-input-container>
+          <div layout-gt-sm="row">
+            <md-input-container flex class="form-group md-block" show-errors>
+              <label for="email">Customer email address</label>
+              <input name="email" type="email" ng-model="vm.customer.email" id="email" class="form-control" required>
+              <div ng-messages="vm.form.customerForm.email.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your email address</p>
+                <p class="my-message" ng-message="email">Invalid email address.</p>
+              </div>
+            </md-input-container>
+            <md-input-container flex class="form-group md-block" show-errors>
+              <label for="subject">Email subject</label>
+              <input name="subject" type="text" ng-model="vm.customer.subject" id="subject" class="form-control text-capitalize" required>
+              <div ng-messages="vm.form.customerForm.subject.$error" role="alert">
+                <p class="my-message" ng-message="required">Please enter your subject title!</p>
+              </div>
+            </md-input-container>
+          </div>
+          <md-input-container class="form-group md-block">
+            <div ta-bind="text" name="emailTemplate" ng-model="vm.customer.hiddenTemplate" ta-unsafe-sanitizer="true" ng-hide="true" id="hiddenTemplate"></div>
+          </md-input-container>
+          <md-input-container class="form-group md-block" show-errors>
+            <div text-angular="text-angular" name="htmlcontent" ng-model="vm.customer.htmlcontent" ta-unsafe-sanitizer="true" ta-disabled='disabled' id="htmlcontent" ng-cut="$event.preventDefault()" style="max-height : 400px; overflow-y : scroll;" required></div>
+            <div ng-messages="vm.form.customerForm.htmlcontent.$error" role="alert">
+              <p class="my-message" ng-message="required">Please enter the email content</p>
+            </div>
+          </md-input-container>
+          <div class="text-center form-group">
+            <md-button type="submit" ng-disabled="!vm.form.customerForm.$valid" class="md-raised md-primary faded-jade" ng-if="vm.subscriptionStatus == 'valid'">Send
+              <md-tooltip md-direction="bottom" class="mat-tooltip">Send greeting to the customer</md-tooltip>
+            </md-button>
+            <md-button class="md-raised md-primary faded-jade" ng-disabled="!vm.form.customerForm.$valid" ng-if="vm.subscriptionStatus === 'expired' || vm.subscriptionStatus === 'no'" ng-click="vm.loadModal(vm.form.customerForm.$valid);"><span>Pay and Send</span>
+              <md-tooltip md-direction="bottom" class="mat-tooltip">Send greeting to the customer</md-tooltip>
+            </md-button>&nbsp;
+            <md-button class="md-raised md-primary faded-jade" ui-sref="customers.birthdaylist"><span>Cancel</span>
+              <md-tooltip md-direction="bottom" class="mat-tooltip">Back to birthday customers</md-tooltip>
+            </md-button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

@@ -1,0 +1,174 @@
+<!-- <div class="container" ng-controller="HeaderController as vm">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+     <a class="logo-container">
+      <img src="/modules/core/client/img/logo.png" alt="Birthday Headlines" height="50" style="opacity: 0.7;">
+    </a>
+    <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">
+      <li ng-class="{ active: isActive('') }">
+        <a ui-sref="home" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Home</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ng-class="{ active: isActive('features') }">
+        <a  href="#features" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Feature</a>
+      </li>
+      <li ng-class="{ active: isActive('samples') }">
+        <a  href="#samples" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Samples</a>
+      </li>
+      <li ng-class="{ active: isActive('custom') }">
+        <a  href="#custom" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Custom</a>
+      </li>
+      <li ng-class="{ active: isActive('reviews') }">
+        <a  href="#reviews" style="color:#f2f2f2; float: left;font-size:large;  text-align:center; text-decoration:none;">Reviews</a>
+      </li>
+      <li ng-class="{ active: isActive('clients') }">
+        <a href="#clients" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Clients</a>
+      </li>
+      <li ng-class="{ active: isActive('whoweare') }">
+        <a href="#whoweare" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Who We Are</a>
+      </li>
+      <li ng-class="{ active: isActive('contact') }">
+        <a href="#contact" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Contact</a>
+      </li>
+    </ul>
+  </div>
+  <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
+    <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+      <li ng-repeat="item in vm.menu.items | orderBy: 'order'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
+        <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+        <ul ng-switch-when="dropdown" class="dropdown-menu">
+          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
+            <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
+          </li>
+        </ul>
+        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-left" ng-hide="vm.authentication.user">
+      <li ng-class="{ active: isActive('signin') }">
+        <a ui-sref="authentication.signin" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Login</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ng-class="{ active: isActive('signup') }">
+        <a ui-sref="authentication.signup" style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;">Register</a>
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
+      <li class="nav navbar-nav navbar-left">
+        <a style="color:#f2f2f2; float: left; font-size:large; text-align:center; text-decoration:none;" role="button">
+          <img ng-src="/{{vm.authentication.user.roles[0] === 'user' ? vm.authentication.user.profileImageURL : 'modules/users/client/img/profile/default.png'}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="vm.authentication.user.displayName" ng-click="vm.redirectToHome()" style="color:#f2f2f2; text-align:center; font-size:large; text-decoration:none;"></span>
+        </a>
+      </li>
+      <li class="nav navbar-nav navbar-left">
+       <a ng-click="vm.logout()" target="_self" style="color:#f2f2f2; float: left; font-size:large; cursor: pointer">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div> -->
+<div class="container flex" ng-controller="HeaderController as vm" ng-cloak>
+  <!--<md-content class="md-padding"> -->
+  <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" ng-if="!vm.authentication.user">
+    <a href="#home" ng-click="goto('home')">
+          <img src="/modules/core/client/img/BH_logo_white_large-01.png" alt="Birthday Headlines" height="50" style="max-height: 50px;">
+      </a>
+    <span flex></span>
+     <md-nav-item md-nav-click="goto('home')" name="home" ng-hide="vm.authentication.user">
+        <a href="#home" style="color:#fff; float: left; font-size:12px;">Home</a>
+      </md-nav-item>
+   <!--   <md-nav-item md-nav-click="goto('feature')" name="feature" ng-hide="vm.authentication.user">
+        <a href="#features" style="color:#fff; float: left; font-size:12px;">Feature</a>
+      </md-nav-item>
+      <md-nav-item md-nav-click="goto('samples')" name="samples" ng-hide="vm.authentication.user">
+        <a  href="#samples" style="color:#fff; float: left; font-size:12px;">Samples</a>
+      </md-nav-item> -->
+   <!--   <md-nav-item md-nav-click="goto('custom')" name="custom" ng-hide="vm.authentication.user">
+        <a  href="#custom" style="color:#f2f2f2; float: left;">Custom</a>
+      </md-nav-item>
+      <md-nav-item md-nav-click="goto('reviews')" name="reviews" ng-hide="vm.authentication.user">
+        <a  href="#reviews" style="color:#f2f2f2; float: left;">Reviews</a>
+      </md-nav-item> -->
+    <!--  <md-nav-item md-nav-click="goto('pricing')" name="clients" ng-hide="vm.authentication.user">
+        <a  href="#pricing" style="color:#fff; float: left; font-size:12px;">Pricing</a>
+      </md-nav-item> 
+      <md-nav-item md-nav-click="goto('about')" name="about" ng-hide="vm.authentication.user">
+        <a  href="#about" style="color:#fff; float: left; font-size:12px;">Who we are</a>
+      </md-nav-item> 
+      <md-nav-item md-nav-click="goto('contact')" name="contact" ng-hide="vm.authentication.user">
+        <a  href="#contact" style="color:#fff; float: left; font-size:12px;">Contact</a>
+      </md-nav-item> -->
+    <md-nav-item md-nav-click="goto('authentication.signin')" name="login" ng-hide="vm.authentication.user">
+      <a style="color:#fff; float: left; font-size:12px;">Log In</a>
+    </md-nav-item>
+    <md-nav-item md-nav-click="goto('authentication.signup')" name="signup" ng-hide="vm.authentication.user">
+      <a style="color:#fff; float: left; font-size:12px;">Register</a>
+    </md-nav-item>
+  </md-nav-bar>
+  <md-nav-bar ng-if="vm.authentication.user">
+    <a href="#home" ng-click="goto('home')">
+          <img src="/modules/core/client/img/BH_logo_white_large-01.png" alt="Birthday Headlines" height="50" style="max-height: 50px;">
+      </a>
+    <span flex></span>
+    <md-nav-item md-nav-click="vm.redirectToHome()" name="profile" ng-show="vm.authentication.user">
+      <a style="color:#fff; float: left;" role="button">
+              <img ng-src="/{{vm.authentication.user.roles[0] === 'user' ? vm.authentication.user.profileImageURL : 'modules/users/client/img/profile/default.png'}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+            <span ng-bind="vm.authentication.user.displayName" style="color:#fff;"></span>
+          </a>
+    </md-nav-item>
+    <md-nav-item md-nav-click="vm.logout()" name="login" ng-show="vm.authentication.user">
+      <a target="_self" style="color:#fff; float: left; cursor: pointer">Logout</a>
+    </md-nav-item>
+  </md-nav-bar>
+</div>
+<!-- <div layout="row" class="bg-dark-blue nav-dark" layout-align="space-between center" ng-controller="HeaderController as vm">
+  <div>
+      <md-button><img src="/modules/core/client/img/logo.png" alt="Birthday Headlines" height="50" style="opacity: 0.7;"></md-button>
+      <md-button ng-hide="vm.authentication.user">Home</md-button>
+      <md-button ng-hide="vm.authentication.user">Features</md-button>
+      <md-button ng-hide="vm.authentication.user">Samples</md-button>
+      <md-button ng-hide="vm.authentication.user">Custom</md-button>
+      <md-button ng-hide="vm.authentication.user">Reviews</md-button>
+      <md-button ng-hide="vm.authentication.user">Clients</md-button>
+      <md-button ng-hide="vm.authentication.user">Who We Are</md-button>
+      <md-button ng-hide="vm.authentication.user">Contact</md-button>
+      <md-button ui-sref="authentication.signin" ng-hide="vm.authentication.user">Login</md-button>
+      <md-button ui-sref="authentication.signup" ng-hide="vm.authentication.user">Register</md-button>
+  </div>
+<div class="nav-buttons" ng-show="vm.authentication.user">
+  <md-button><img ng-src="/{{vm.authentication.user.roles[0] === 'user' ? vm.authentication.user.profileImageURL : 'modules/users/client/img/profile/default.png'}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+    <span ng-bind="vm.authentication.user.displayName" ng-click="vm.redirectToHome()" style="color:#f2f2f2; text-align:center; font-size:large; text-decoration:none;"></span></md-button>
+  <md-button class="md-raised md-warn" ng-click="logout($event)">Logout</md-button>
+</div>
+</div> -->
+<!-- <div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="one">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Tab One</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="two">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Tab Two</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+          <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="three">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Tab Three</h1>
+          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div> -->

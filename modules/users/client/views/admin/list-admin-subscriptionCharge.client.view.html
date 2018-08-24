@@ -1,0 +1,26 @@
+<section>
+  <!--   {{vm.subscriptions}}
+ -->
+  <div class="list-group" style="margin-top:50px">
+    <table class="table table-striped table-condensed table-hover">
+      <thead>
+        <tr>
+          <th class="col-md-3">Description&nbsp;</th>
+          <th class="col-md-1">Amount&nbsp;</th>
+          <th class="col-md-1">Currency&nbsp;</th>
+          <th class="col-md-1">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="subscription in vm.subscriptions">
+          <td>{{ (subscription.description? subscription.description : '-') }}</td>
+          <td>{{ (subscription.amount? subscription.amount : '-') }}</td>
+          <td>{{ subscription.currency? subscription.currency : '-' }}</td>
+          <td>
+            <md-button style="margin:0px;" class="md-raised md-primary faded-jade" title="Edit" ui-sref="admin.dashboard.subscription-edit({subscriptionId: subscription._id})"><span class="glyphicon glyphicon-edit"></span></md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

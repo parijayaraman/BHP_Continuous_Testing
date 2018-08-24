@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Contact Registration Form</title>
+  <style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+
+  </style>
+</head>
+
+<body>
+  <p>Dear Admin,</p>
+  <p></p>
+  <p>The below user is tried to contact you. Please find the below details, </p>
+  <table style="width:100%">
+    <tr>
+      <th>Name:</th>
+      <td>{{name}}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{email}}</td>
+    </tr>
+    <tr>
+      <th>Subject:</th>
+      <td>{{subject}}</td>
+    </tr>
+    <tr>
+      <th>Message:</th>
+      <td>{{message}}</td>
+    </tr>
+  </table>
+  <br />
+</body>
+
+</html>

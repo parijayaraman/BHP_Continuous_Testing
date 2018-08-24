@@ -1,0 +1,51 @@
+<section>
+  <div class="page-header" style="border-bottom: none;">
+    <div layout="row">
+      <div class="col-md-4">
+        <h4>Welcome, {{vm.authentication.user.displayName}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="list-group">
+    <div class="col-sm-4">
+      <div class="col-sm-9">
+        <h4>Total number of active professionals</h4>
+      </div>
+      <div class="col-sm-3">
+        <h4>:  {{vm.data.professionals}} </h4>
+      </div>
+      <div class="col-sm-9">
+        <h4>Total number of customers</h4>
+      </div>
+      <div class="col-sm-3">
+        <h4>: {{vm.data.customers}} </h4>
+      </div>
+      <div class="col-sm-9">
+        <h4>Total number of email greetings sent</h4>
+      </div>
+      <div class="col-sm-3">
+        <h4>: {{vm.data.emails}} </h4>
+      </div>
+      <div class="col-sm-9">
+        <h4>Total number of paid professionals</h4>
+      </div>
+      <div class="col-sm-3">
+        <h4>: {{vm.data.paidProfesssionals}} </h4>
+      </div>
+      <div class="col-sm-9">
+        <h4>Total number of unpaid professionals</h4>
+      </div>
+      <div class="col-sm-3">
+        <h4>: {{vm.data.unpaidProfesssionals}} </h4>
+      </div>
+    </div>
+    <!--	<div class="col-sm-4">
+			<h3>Emails by the month</h3>
+			<canvas id="line" class="chart chart-line ng-isolate-scope" chart-data="monthData" chart-labels="monthLabels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick" width="300" height="300" style="display: block;"> </canvas>
+	</div>
+  <div class="col-sm-4">
+		<h3>Emails by the week</h3>
+		<canvas id="doughnut" class="chart chart-doughnut ng-isolate-scope" chart-data="weekData" chart-labels="weekLabels" width="300" height="300" style="display: block;"></canvas>
+  </div>-->
+  </div>
+</section>

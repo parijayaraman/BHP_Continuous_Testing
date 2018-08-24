@@ -1,0 +1,5 @@
+<span ng-controller="HeaderController as vm">
+	<div ng-if="vm.authentication.user.roles.indexOf('admin') == -1" style="position: fixed; bottom: 30px; right: 30px; cursor: pointer" ng-click="help()">
+	  <i class="fa fa-question-circle fa-3x" style="color:#4c837a"></i>
+	</div>
+</span>

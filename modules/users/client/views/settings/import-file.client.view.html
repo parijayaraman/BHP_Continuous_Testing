@@ -1,0 +1,32 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="import-file-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="80" md-colors="{color:'blue-grey'}">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Import file</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.importDataForm" ng-submit="vm.importData(vm.importDataForm.$valid)" class="importData" novalidate autocomplete="off">
+          <div class="form-group" show-errors>
+            <label class="control-label" for="file">Upload CSV File</label>
+            <p class="md-caption">The file's content must be comma separated, and must contain the columns as:
+              <br/>First name, Last name, Email address, Job title, Organization, DOB, Gender.
+              <br/>For instance,<b>"John, Antony, john@gmail.com, Student, College, 26/01/1950, M"</b>.</p>
+            <input type="file" name="file" id="file" ng-model="vm.upload.file" ngf-select accept=".csv" ngf-max-size="25MB" required/>
+            <div ng-messages="vm.importDataForm.file.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Please upload CSV file.</p>
+            </div>
+          </div>
+          <div><span us-spinner spinner-key="spinner-1"></span></div>
+          <div class="text-center form-group">
+            <md-button class="md-raised md-primary faded-jade" ng-disabled="!vm.importDataForm.$valid" type="submit">Submit</md-button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

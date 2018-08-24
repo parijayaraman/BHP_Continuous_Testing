@@ -1,0 +1,25 @@
+<md-dialog aria-label="Delete Customers">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h4>{{ui.modalHeaderTitle}}</h4>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <P ng-if="model.customer.firstName"> Do you want to delete "{{model.customer.firstName}} {{model.customer.lastName}}"?</P>
+        <P ng-if="!model.customer.firstName"> Do you want to delete the selected customers?</P>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised md-primary faded-jade" ng-click="deleteCustomer(model.customer)">Ok
+        <md-tooltip md-direction="top" class="mat-tooltip">Delete the customer</md-tooltip>
+      </md-button>
+      <md-button class="md-raised md-primary faded-jade" ng-click="cancel()">Cancel</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

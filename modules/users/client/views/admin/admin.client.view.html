@@ -1,0 +1,29 @@
+<!-- <section>
+  <div flex>
+  <uib-tabset>
+      <uib-tab index="0" heading="Home" ui-sref="admin.dashboard.home"></uib-tab>
+      <uib-tab index="2" id="professionalTab" heading="Professionals" ui-sref="admin.dashboard.users"></uib-tab>
+      <uib-tab index="3" heading="Templates"  ui-sref="admin.dashboard.greetingtemplates"></uib-tab>
+      <uib-tab index="4" heading="Subscriptions"  ui-sref="admin.dashboard.subscriptions"></uib-tab>
+    </uib-tabset>
+    <div>
+      <div ui-view></div>
+    </div>
+  </div>
+</section> -->
+<section class="md-padding">
+  <div flex>
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Home" index="0" heading="Home" ui-sref="admin.dashboard.home" flex></md-tab>
+        <md-tab label="Professionals" index="1" id="customerTab" heading="Professionals" ui-sref="admin.dashboard.users" flex></md-tab>
+        <md-tab label="Templates" index="2" heading="Templates" ui-sref="admin.dashboard.greetingtemplates" flex></md-tab>
+        <md-tab label="Subscriptions" index="3" heading="Subscriptions" ui-sref="admin.dashboard.subscriptions" flex></md-tab>
+        <md-tab label="contacts" index="4" heading="Contacts" ui-sref="admin.dashboard.contacts" flex></md-tab>
+      </md-tabs>
+    </md-content>
+    <div class="md-padding">
+      <div ui-view></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="edit-subscription-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="30">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>Edit Subscription</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.subscriptionForm" ng-submit="vm.save(vm.subscriptionForm.$valid)" novalidate>
+          <md-input-container flex class="form-group md-block" show-errors>
+            <label for="firstName">Description</label>
+            <input type="text" id="description" name="description" class="form-control" ng-model="vm.subscription.description" required autofocus />
+            <div ng-messages="vm.subscriptionForm.description.$error" role="alert">
+              <p class="my-message" ng-message="required">Description is required.</p>
+            </div>
+          </md-input-container>
+          <md-input-container flex class="form-group md-block" show-errors>
+            <label for="lastName">Amount (Enter integer and decimal numbers only)</label>
+            <input type="text" id="amount" name="amount" class="form-control" ng-model="vm.subscription.amount" ng-pattern="/^[0-9]+([,.][0-9]+)?$/" required />
+            <div ng-messages="vm.subscriptionForm.amount.$error" role="alert">
+              <p class="my-message" ng-message="required">Amount is required.</p>
+              <p ng-message="pattern">Please enter a valid amount.</p>
+            </div>
+          </md-input-container>
+          <md-input-container flex class="form-group md-block" show-errors>
+            <label for="lastName">Currency</label>
+            <input type="text" id="currency" name="currency" class="form-control" ng-model="vm.subscription.currency" required disabled/>
+            <div ng-messages="vm.subscriptionForm.currency.$error" role="alert">
+              <p class="my-message" ng-message="required">Currency is required.</p>
+            </div>
+          </md-input-container>
+          <div class="form-group text-center">
+            <md-button type="submit" ng-disabled="!vm.subscriptionForm.$valid" class="md-raised md-primary faded-jade" ng-hide="vm.isCreateOrUpdate">{{vm.subscription._id ? 'Update' : 'Create'}}</md-button>
+            <md-button type="submit" ng-disabled="true" class="md-raised md-primary faded-jade" ng-show="vm.isCreateOrUpdate">{{vm.subscription._id ? 'Updating...' : 'Creating...'}}</md-button>
+            <md-button class="md-raised md-primary faded-jade" title="Go Back" ui-sref="admin.dashboard.subscriptions"><span>Cancel</span></md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</section>

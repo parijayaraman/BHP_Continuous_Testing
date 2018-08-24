@@ -1,0 +1,95 @@
+<section>
+  <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="greeting-template-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="65">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2><span>{{vm.greetingtemplate._id ? 'Edit greeting template' : 'New greeting template'}}</span></h2>
+        </div>
+      </md-toolbar>
+      <md-card-content>
+        <form name="vm.form.greetingtemplateForm" class="form-horizontal" ng-submit="vm.save(vm.form.greetingtemplateForm.$valid)" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <md-input-container flex class="form-group md-block" show-errors>
+                <label for="name">Name</label>
+                <input name="name" type="text" ng-model="vm.greetingtemplate.name" id="name" class="form-control" required>
+                <div ng-messages="vm.form.greetingtemplateForm.name.$error" role="alert">
+                  <p class="my-message" ng-message="required">Please enter a name for your template</p>
+                </div>
+            </div>
+          </div>
+          </md-input-container>
+          <md-input-container flex class="form-group md-block" show-errors>
+            <div>
+              <label for="content">Template content</label>
+            </div>
+            <br />
+            <br />
+            <div text-angular="text-angular" name="content" id="content" ng-model="vm.greetingtemplate.content" ta-disabled='disabled' id="content" ta-unsafe-sanitizer="true" style="max-height : 400px; overflow-y : scroll;" required></div>
+            <div ng-messages="vm.form.greetingtemplateForm.content.$error" role="alert">
+              <p class="my-message" ng-message="required">Please leave a message for your template</p>
+            </div>
+          </md-input-container>
+          <div class="form-group text-center">
+            <md-button type="submit" ng-disabled="!vm.form.greetingtemplateForm.$valid" class="md-raised md-primary faded-jade" ng-hide="vm.isCreateOrUpdate">{{vm.greetingtemplate._id ? 'Update' : 'Create'}}</md-button>
+            <md-button type="submit" ng-disabled="true" class="md-raised md-primary faded-jade" ng-show="vm.isCreateOrUpdate">{{vm.greetingtemplate._id ? 'Updating...' : 'Creating...'}}</md-button>
+            <md-button class="md-raised md-primary faded-jade" title="Go Back" ui-sref="admin.dashboard.greetingtemplates"><span>Cancel</span></md-button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="30">
+      <md-card-content>
+        <md-content md-colors="{color:'blue-grey'}" style="max-height : 600px; overflow-y : scroll;">
+          <strong>Info! </strong>Please create the template with the following tag values
+          <p><strong>TAG_CUSTOMER_FIRST_NAME: </strong>It will be replaced with the actual customer first name on the birthday date</p>
+          <p><strong>TAG_CUSTOMER_LAST_NAME: </strong>It will be replaced with the actual customer last name on the birthday date</p>
+          <p><strong>TAG_PRESIDENT: </strong>It will be replaced with the actual President name on the birthday date</p>
+          <p><strong>TAG_VICE_PRESIDENT: </strong>It will be replaced with the actual Vice President name on the birthday date</p>
+          <p><strong>TAG_INCIDENT1: </strong>It will be replaced with the actual first incident on the birthday date</p>
+          <p><strong>TAG_INCIDENT2: </strong>It will be replaced with the actual second incident on the birthday date</p>
+          <p><strong>TAG_INCIDENT3: </strong>It will be replaced with the actual third incident on the birthday date</p>
+          <p><strong>TAG_INCIDENT4: </strong>It will be replaced with the actual fourth incident on the birthday date</p>
+          <p><strong>TAG_POPULAR_TV_SHOW:</strong>It will be replaced with the actual famous TV show on the birthday date</p>
+          <p><strong>TAG_MOVIE: </strong>It will be replaced with the actual famous movie on the birthday date</p>
+          <p><strong>TAG_ACTOR: </strong>It will be replaced with the actual actor name on the birthday date</p>
+          <p><strong>TAG_ACTRESS: </strong>It will be replaced with the actual actress name on the birthday date</p>
+          <p><strong>TAG_MONTH: </strong>It will be replaced with the actual month on the birthday date</p>
+          <p><strong>TAG_DATE: </strong>It will be replaced with the actual date on the birthday date</p>
+          <p><strong>TAG_YEAR: </strong>It will be replaced with the actual year on the birthday date</p>
+          <p><strong>TAG_SP: </strong>It will be replaced with the actual SP value on the birthday date</p>
+          <p><strong>TAG_WORLD_SERIES_WINNER: </strong>It will be replaced with the base ball winner on the birthday year</p>
+          <p><strong>TAG_SUPERBOWL_WINNER: </strong>It will be replaced with the super bowl winner on the birthday year</p>
+          <p><strong>TAG_GALLON_OF_MILK: </strong>It will be replaced with the actual rate of gallon of milk on the birthday year</p>
+          <p><strong> TAG_GALLON_OF_GAS: </strong>It will be replaced with the actual rate of gallon of gas on the birthday year</p>
+          <p><strong>TAG_NEW_CAR: </strong>It will be replaced with the actual rate of new car on the birthday year</p>
+          <p><strong>TAG_NEW_HOME: </strong>It will be replaced with the actual rate of new home on the birthday year</p>
+          <p><strong>TAG_POPULAR_GIRL: </strong>It will be replaced with the popular girl name on the birthday year</p>
+          <p><strong>TAG_POPULAR_BOY: </strong>It will be replaced with the popular boy name on the birthday year</p>
+          <p><strong>TAG_POPULAR_TV_SHOW: </strong>It will be replaced with the t.v shows on the birthday year</p>
+          <p><strong>TAG_TIME_PERSON_OF_THE_YEAR: </strong>It will be replaced with the time person of the year on the birthday year</p>
+          <!--p><strong>TAG_WAGES: </strong>It will be replaced with the rate of wages on the birthday year</p-->
+          <p><strong>TAG_LOAF_OF_BREAD: </strong>It will be replaced with the actual rate of gallon of milk on the birthday year</p>
+          <p><strong>TAG_GAINTO: </strong>It will be replaced with the gain on the birthday year</p>
+          <p><strong>TAG_PRESIDENT_IMAGE: </strong>It will be replaced with the president's image on the birthday year</p>
+          <p><strong>TAG_VICE_PRESIDENT_IMAGE: </strong>It will be replaced with the vice president's image on the birth year</p>
+          <p><strong>TAG_ACTOR_IMAGE: </strong>It will be replaced with the actual famous actor image on the birth year</p>
+          <p><strong>TAG_ACTRESS_IMAGE: </strong>It will be replaced with the actual famous actress image on the birth year</p>
+          <p><strong>TAG_MOVIE_IMAGE: </strong>It will be replaced with the actual famous movie image on the birth year</p>
+          <p><strong>TAG_TIME_PERSON_IMAGE: </strong>It will be replaced with the time person of the year image</p>
+          <p><strong>TAG_MILK_IMAGE: </strong>It will be replaced with the milk can image</p>
+          <p><strong>TAG_BREAD_IMAGE: </strong>It will be replaced with the bread image</p>
+          <p><strong>TAG_CAR_IMAGE: </strong>It will be replaced with the actual famous car image on the birth year</p>
+          <p><strong>TAG_EVENT1_IMAGE: </strong>It will be replaced with the TAG_INCIDENT1 image, if the image does not exist, it will be replaced with the defalut image</p>
+          <p><strong>TAG_EVENT2_IMAGE: </strong>It will be replaced with the TAG_INCIDENT2 image, if the image does not exist, it will be replaced with the defalut image</p>
+          <p><strong>TAG_EVENT3_IMAGE: </strong>It will be replaced with the TAG_INCIDENT3 image, if the image does not exist, it will be replaced with the defalut image</p>
+          <p><strong>TAG_EVENT4_IMAGE: </strong>It will be replaced with the TAG_INCIDENT4 image, if the image does not exist, it will be replaced with the defalut image</p>
+          <p><strong>TAG_POP_SONG: </strong>It will be replaced with the best pop song of the birthday year</p>
+          <p><strong>TAG_HIP_HOP_SONG: </strong>It will be replaced with the hip hop song of the birthday year</p>
+        </md-content>
+      </md-card-content>
+  </md-content>
+</section>

@@ -1,0 +1,20 @@
+<div class="modal-body row">
+  <div class="col-md-2">
+    <img alt="" src="/images/tickmark.jpg" height="75" width="75">
+  </div>
+  <div class="col-md-10" ng-show="activated">
+    <div>
+      <p>Email sending in progress</p>
+      <div layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10" ng-show="sent">
+    <h4>Greeting has been sent successfully</h4>
+    <hr />
+    <!-- <a class="btn btn-success" title="OK" ng-click="agree()"><span class="">OK</span></a> -->
+    <md-button class="md-raised md-primary faded-jade" ng-click="agree()"><span>OK</span>
+    </md-button>
+  </div>
+</div>

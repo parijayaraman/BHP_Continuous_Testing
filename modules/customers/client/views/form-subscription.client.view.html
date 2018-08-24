@@ -1,0 +1,29 @@
+<form class="form-horizontal" name="confirmSubscriptionForm" class="subscription" novalidate autocomplete="off">
+  <div class="modal-header">
+    <h4>{{ui.modalHeaderTitle}}</h4>
+  </div>
+  <div class="modal-body col-md-8">
+    <fieldset>
+      <div class="form-group col-md-12" show-errors>
+        <label>
+          <div ng-repeat="subscription in subscriptions">
+            <label>
+              <input type="radio" name="subscription" ng-click="selectSubscriptionType(subscription)"> {{subscription.description}}
+            </label>
+          </div>
+        </label>
+        <div ng-messages="confirmSubscriptionForm.subscription.$error" role="alert">
+          <p class="help-block error-text" ng-show="error" ng-message="required">Subscription Type is required.</p>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="modal-footer">
+    <!--    <button type="submit" class="btn btn-primary" ng-click="submitSubscription(confirmSubscriptionForm.subscription.$valid)">OK</button> -->
+    <md-button type="submit" class="md-raised md-primary faded-jade" ng-click="submitSubscription(confirmSubscriptionForm.subscription.$valid)">Ok</md-button>
+    <!--         <button type="submit" class="btn btn-primary" ng-disabled="form.confirmSubscriptionForm.$invalid">OK</button>
+ -->
+    <!-- <button class="btn btn-warning cancel" role="button" ng-click="cancel()">Cancel</button> -->
+    <md-button class="md-raised md-primary faded-jade" ng-click="cancel()">Cancel</md-button>
+  </div>
+</form>
