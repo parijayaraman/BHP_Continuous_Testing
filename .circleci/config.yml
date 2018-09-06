@@ -8,6 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: check node version
+          command: node -v
+      - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
