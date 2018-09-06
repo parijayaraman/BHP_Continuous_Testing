@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/mern-starter
     docker:
       - image: circleci/node:10-stretch-browsers
-      - image: mongo:4.1.2-xenial-ram
+      - image: circleci/mongo:4.1.2-xenial-ram
     steps:
       - checkout
       - run:
