@@ -13,13 +13,21 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.14/selenium-server-standalone-3.14.0.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.14.0.jar -log test-reports/selenium.log
+          background: true
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
           name: test
-          command: npm test
+          command: node test.js 
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
