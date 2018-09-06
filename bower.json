@@ -42,7 +42,10 @@
       "main": []
     }
   },
-  "resolutions": {
-    "angular": "1.5.11"
-  }
+   "resolutions": {
+   "angular": "~1.5.0",
+   "angular-animate": "~1.5.0",
+   "angular-aria": "~1.5.0",
+   "angular-messages": "~1.5.0"
+ }
 }
