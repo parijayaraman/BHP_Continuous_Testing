@@ -6,36 +6,35 @@ jobs:
       - image: circleci/node:10-stretch-browsers
       - image: mongo:latest
     steps:
-      - checkout
+       - checkout
+       - run:
+            name: install-npm-wee
+            command: npm install
+       - run: mkdir test-reports
+       - run:
+            name: install protractor for testing
+            command: npm install -g protractor
+       - run:    
+            name: update webdriver-manager
+            command: webdriver-manager update
+       - save_cache:
+            key: dependency-cache-{{ checksum "package.json" }}
+            paths:
+              - ./node_modules
+       - run:    
+            name: start webdriver-manager
+            command: webdriver-manager start
+       - run:    
+            name: start testing
+            command: protractor conf.js
       - run:
-          name: check node version
-          command: node -v
-      - run:
-          name: install-npm-wee
-          command: npm install
-      - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.14/selenium-server-standalone-3.14.0.jar
-      - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.14.0.jar -log test-reports/selenium.log
-          background: true
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: test
-          command: node test.js 
-      - run:
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+           name: code-coverage
+           command: './node_modules/.bin/nyc report --reporter=text-lcov'
       - store_artifacts:
-          path: test-results.xml
-          prefix: tests
+           path: test-results.xml
+           prefix: tests
       - store_artifacts:
-          path: coverage
-          prefix: coverage
+           path: coverage
+           prefix: coverage
       - store_test_results:
-          path: test-results.xml
+           path: test-results.xml
